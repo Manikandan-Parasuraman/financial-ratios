@@ -1,4 +1,4 @@
-module go/financial-ratios
+module financial-ratios
 
 go 1.22.5
 

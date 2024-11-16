@@ -9,84 +9,175 @@
 </head>
 
 <body>
-    <div class="header"> <!-- Fixed header -->
+    <div class="header">
         <div class="time-display">
-            <div id="ustTime"></div>
-            <div id="istTime"></div>
+            <div class="date" id="current-date"></div>
+            <div class="time">
+                <span class="time-label">IST</span>
+                <span id="current-time"></span>
+            </div>
         </div>
-        <h1>Financial Ratios Calculation</h1>
+        <h1>Financial Ratios Calculator</h1>
     </div>
     <div class="container">
-        <div class="sidebar"> <!-- Fixed sidebar -->
+        <div class="sidebar">
             <ul>
                 <li><button onclick="showForm('savingsToIncomeForm')"
-                        style="background: none; border: none; color: #FFFFFF; text-decoration: none; cursor: pointer;">Savings
-                        to Income Ratio</button></li>
+                        class="sidebar-button">Savings to Income Ratio</button></li>
                 <li><button onclick="showForm('debtToIncomeForm')"
-                        style="background: none; border: none; color: #FFFFFF; text-decoration: none; cursor: pointer;">Debt
-                        to Income Ratio</button></li>
+                        class="sidebar-button">Debt to Income Ratio</button></li>
                 <li><button onclick="showForm('emergencyFundForm')"
-                        style="background: none; border: none; color: #FFFFFF; text-decoration: none; cursor: pointer;">Emergency
-                        Fund Ratio</button></li>
+                        class="sidebar-button">Emergency Fund Ratio</button></li>
+                <li><button onclick="showForm('housingExpensesForm')"
+                        class="sidebar-button">Housing Expenses Ratio</button></li>
+                <li><button onclick="showForm('netWorthIncomeForm')"
+                        class="sidebar-button">Net Worth to Income Ratio</button></li>
+                <li><button onclick="showForm('investmentRatioForm')"
+                        class="sidebar-button">Investment Ratio</button></li>
+                <li><button onclick="showForm('retirementSavingsForm')"
+                        class="sidebar-button">Retirement Savings Ratio</button></li>
+                <li><button onclick="showForm('liquidityFundForm')"
+                        class="sidebar-button">Liquidity Fund Ratio</button></li>
             </ul>
         </div>
-        <div class="content">
-            <div id="savingsToIncomeForm" class="form-container" style="display:none;">
-                <h2>Calculate Savings to Gross Income Ratio</h2>
-                <label for="savings">Savings:</label>
-                <input type="text" id="savings" placeholder="Enter Savings">
-                <label for="gross_income">Gross Income:</label>
-                <input type="text" id="gross_income" placeholder="Enter Gross Income">
-                <button onclick="calculateSavingsToIncome()">Calculate</button>
+        <div class="main-content">
+            <div class="form-section">
+                <div id="savingsToIncomeForm" class="form-container" style="display:none;">
+                    <h2>Savings to Income Ratio</h2>
+                    <div class="form-group">
+                        <label for="savings">Savings:</label>
+                        <input type="number" id="savings" placeholder="Enter Savings" step="0.01">
+                    </div>
+                    <div class="form-group">
+                        <label for="gross_income">Gross Income:</label>
+                        <input type="number" id="gross_income" placeholder="Enter Gross Income" step="0.01">
+                    </div>
+                    <button onclick="calculateSavingsToIncome()" class="calculate-btn">Calculate</button>
+                </div>
+
+                <div id="debtToIncomeForm" class="form-container" style="display:none;">
+                    <h2>Debt to Income Ratio</h2>
+                    <div class="form-group">
+                        <label for="total_monthly_debt">Total Monthly Debt:</label>
+                        <input type="number" id="total_monthly_debt" placeholder="Enter Total Monthly Debt" step="0.01">
+                    </div>
+                    <div class="form-group">
+                        <label for="gross_income_debt">Gross Income:</label>
+                        <input type="number" id="gross_income_debt" placeholder="Enter Gross Income" step="0.01">
+                    </div>
+                    <button onclick="calculateDebtToIncome()" class="calculate-btn">Calculate</button>
+                </div>
+
+                <div id="emergencyFundForm" class="form-container">
+                    <h2>Emergency Fund Ratio</h2>
+                    <div class="form-group">
+                        <label for="emergency_fund">Emergency Fund:</label>
+                        <input type="number" id="emergency_fund" placeholder="Enter Emergency Fund" step="0.01">
+                    </div>
+                    <div class="form-group">
+                        <label for="monthly_expenses">Monthly Expenses:</label>
+                        <input type="number" id="monthly_expenses" placeholder="Enter Monthly Expenses" step="0.01">
+                    </div>
+                    <button onclick="calculateEmergencyFund()" class="calculate-btn">Calculate</button>
+                </div>
+
+                <div id="housingExpensesForm" class="form-container" style="display:none;">
+                    <h2>Housing Expenses Ratio</h2>
+                    <div class="form-group">
+                        <label for="monthly_housing_cost">Monthly Housing Cost:</label>
+                        <input type="number" id="monthly_housing_cost" placeholder="Enter Monthly Housing Cost" step="0.01">
+                    </div>
+                    <div class="form-group">
+                        <label for="monthly_gross_income_housing">Monthly Gross Income:</label>
+                        <input type="number" id="monthly_gross_income_housing" placeholder="Enter Monthly Gross Income" step="0.01">
+                    </div>
+                    <button onclick="calculateHousingExpenses()" class="calculate-btn">Calculate</button>
+                </div>
+
+                <div id="netWorthIncomeForm" class="form-container" style="display:none;">
+                    <h2>Net Worth to Income Ratio</h2>
+                    <div class="form-group">
+                        <label for="net_worth">Net Worth:</label>
+                        <input type="number" id="net_worth" placeholder="Enter Net Worth" step="0.01">
+                    </div>
+                    <div class="form-group">
+                        <label for="annual_income">Annual Gross Income:</label>
+                        <input type="number" id="annual_income" placeholder="Enter Annual Income" step="0.01">
+                    </div>
+                    <button onclick="calculateNetWorthToIncome()" class="calculate-btn">Calculate</button>
+                </div>
+
+                <div id="investmentRatioForm" class="form-container" style="display:none;">
+                    <h2>Investment Ratio</h2>
+                    <div class="form-group">
+                        <label for="total_investment">Total Investment:</label>
+                        <input type="number" id="total_investment" placeholder="Enter Total Investment" step="0.01">
+                    </div>
+                    <div class="form-group">
+                        <label for="net_worth_investment">Net Worth:</label>
+                        <input type="number" id="net_worth_investment" placeholder="Enter Net Worth" step="0.01">
+                    </div>
+                    <button onclick="calculateInvestmentRatio()" class="calculate-btn">Calculate</button>
+                </div>
+
+                <div id="retirementSavingsForm" class="form-container" style="display:none;">
+                    <h2>Retirement Savings Ratio</h2>
+                    <div class="form-group">
+                        <label for="retirement_savings">Savings:</label>
+                        <input type="number" id="retirement_savings" placeholder="Enter Savings" step="0.01">
+                    </div>
+                    <div class="form-group">
+                        <label for="annual_income_retirement">Income:</label>
+                        <input type="number" id="annual_income_retirement" placeholder="Enter Income" step="0.01">
+                    </div>
+                    <button onclick="calculateRetirementSavings()" class="calculate-btn">Calculate</button>
+                </div>
+
+                <div id="liquidityFundForm" class="form-container" style="display:none;">
+                    <h2>Liquidity Fund Ratio</h2>
+                    <div class="form-group">
+                        <label for="liquidity_fund">Liquidity Fund:</label>
+                        <input type="number" id="liquidity_fund" placeholder="Enter Liquidity Fund" step="0.01">
+                    </div>
+                    <div class="form-group">
+                        <label for="net_worth_liquidity">Net Worth:</label>
+                        <input type="number" id="net_worth_liquidity" placeholder="Enter Net Worth" step="0.01">
+                    </div>
+                    <button onclick="calculateLiquidityFund()" class="calculate-btn">Calculate</button>
+                </div>
             </div>
-            <div id="debtToIncomeForm" class="form-container" style="display:none;">
-                <h2>Calculate Debt to Gross Income Ratio</h2>
-                <label for="savings">Total Monthly Debt:</label>
-                <input type="text" id="total_monthly_debt" placeholder="Enter Total Monthly Debt">
-                <label for="gross_income">Gross Income:</label>
-                <input type="text" id="gross_income" placeholder="Enter Gross Income">
-                <button onclick="calculateDebtToIncome()">Calculate</button>
-            </div>
-            <div id="emergencyFundForm" class="form-container">
-                <h2>Calculate Emergency Fund Ratio</h2>
-                <label for="emergency_fund">Emergency Fund:</label>
-                <input type="text" id="emergency_fund" placeholder="Enter Emergency Fund">
-                <label for="monthly_expenses">Monthly Expenses:</label>
-                <input type="text" id="monthly_expenses" placeholder="Enter Monthly Expenses">
-                <button onclick="calculateEmergencyFund()">Calculate</button>
-            </div>
-            <div class="results" id="resultsSection">
+
+            <div class="results-section">
                 <h3>Results</h3>
-                <div id="result"></div>
-                <div id="resultSavings"></div>
+                <div id="result" class="result-display"></div>
             </div>
+
         </div>
     </div>
-    <footer> <!-- Fixed footer -->
-        &copy; 2024 Financial Ratios Calculator
+    <footer>
+        <span> 2024 Financial Ratios Calculator • Made with <span style="color: #e25555;">♥</span> by Codeium</span>
     </footer>
     <script src="/static/js/script.js"></script>
     <script>
-        // Function to update time every second
         function updateTime() {
             const now = new Date();
-
-            // Get UST (UTC) time
-            const ustHours = String(now.getUTCHours()).padStart(2, '0');
-            const ustMinutes = String(now.getUTCMinutes()).padStart(2, '0');
-            const ustSeconds = String(now.getUTCSeconds()).padStart(2, '0');
-            document.getElementById('ustTime').innerText = `UST: ${ustHours}:${ustMinutes}:${ustSeconds}`;
-
-            // Get IST (Indian Standard Time)
-            const istHours = String(now.getUTCHours() + 5).padStart(2, '0'); // IST is UTC + 5 hours
-            const istMinutes = String(now.getUTCMinutes()).padStart(2, '0');
+            
+            // Format date
+            const options = { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' };
+            const formattedDate = now.toLocaleDateString('en-US', options);
+            
+            // Calculate IST (UTC+5:30)
+            const istHours = String((now.getUTCHours() + 5) % 24).padStart(2, '0');
+            const istMinutes = String((now.getUTCMinutes() + 30) % 60).padStart(2, '0');
             const istSeconds = String(now.getUTCSeconds()).padStart(2, '0');
-            document.getElementById('istTime').innerText = `IST: ${istHours}:${istMinutes}:${istSeconds}`;
+            
+            // Update DOM
+            document.getElementById('current-date').innerText = formattedDate;
+            document.getElementById('current-time').innerText = `${istHours}:${istMinutes}:${istSeconds}`;
         }
 
-        // Update time every second
         setInterval(updateTime, 1000);
-        updateTime(); // Call it once to set initial time
+        updateTime();
     </script>
 </body>
 

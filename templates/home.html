@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Financial Ratios Calculator - Home</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="/static/css/home.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+</head>
+<body class="home-body">
+    <div class="header">
+        <div class="time-display">
+            <div class="date" id="current-date"></div>
+            <div class="time">
+                <span class="time-label">IST</span>
+                <span id="current-time"></span>
+            </div>
+        </div>
+        <h1>Financial Ratios Calculator</h1>
+    </div>
+
+    <div class="home-container">
+        <section class="hero animate__animated animate__fadeIn">
+            <div class="hero-content">
+                <h1 class="animate__animated animate__slideInDown">Smart Financial Health Analysis</h1>
+                <p class="subtitle animate__animated animate__fadeIn animate__delay-1s">
+                    Make informed financial decisions with our comprehensive ratio calculators
+                </p>
+                <div class="cta-container animate__animated animate__fadeIn animate__delay-2s">
+                    <a href="/calculator#savings" class="cta-button">Get Started</a>
+                    <div class="scroll-indicator">
+                        <span>Explore More</span>
+                        <div class="mouse"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-stats" data-aos="fade-left">
+                <div class="stat-item">
+                    <span class="stat-number">8+</span>
+                    <span class="stat-label">Financial Ratios</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">100%</span>
+                    <span class="stat-label">Free</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">Real-time</span>
+                    <span class="stat-label">Calculations</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="features">
+            <h2 class="section-title" data-aos="fade-up">Our Financial Calculators</h2>
+            <div class="feature-grid">
+                <div class="feature-card" data-aos="zoom-in" data-aos-delay="0" onclick="navigateToCalculator('emergencyFundForm')">
+                    <div class="feature-icon">💰</div>
+                    <h3>Emergency Fund Ratio</h3>
+                    <p>Calculate how many months your emergency fund can sustain you. Essential for financial security.</p>
+                    <div class="feature-hover">
+                        <span class="learn-more">Calculate Now →</span>
+                    </div>
+                </div>
+                <div class="feature-card" data-aos="zoom-in" data-aos-delay="100" onclick="navigateToCalculator('savingsToIncomeForm')">
+                    <div class="feature-icon">💹</div>
+                    <h3>Savings to Income Ratio</h3>
+                    <p>Track your savings rate relative to income. Key indicator of financial health.</p>
+                    <div class="feature-hover">
+                        <span class="learn-more">Calculate Now →</span>
+                    </div>
+                </div>
+                <div class="feature-card" data-aos="zoom-in" data-aos-delay="200" onclick="navigateToCalculator('debtToIncomeForm')">
+                    <div class="feature-icon">🏦</div>
+                    <h3>Debt to Income Ratio</h3>
+                    <p>Understand your debt burden relative to income. Critical for loan applications.</p>
+                    <div class="feature-hover">
+                        <span class="learn-more">Calculate Now →</span>
+                    </div>
+                </div>
+                <div class="feature-card" data-aos="zoom-in" data-aos-delay="300" onclick="navigateToCalculator('housingExpensesForm')">
+                    <div class="feature-icon">🏠</div>
+                    <h3>Housing Expenses Ratio</h3>
+                    <p>Evaluate if your housing costs are within recommended limits.</p>
+                    <div class="feature-hover">
+                        <span class="learn-more">Calculate Now →</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="benefits">
+            <h2 class="section-title" data-aos="fade-up">Why Choose Our Calculator?</h2>
+            <div class="benefits-container">
+                <div class="benefit-item" data-aos="fade-right">
+                    <div class="benefit-icon">📊</div>
+                    <div class="benefit-content">
+                        <h3>Comprehensive Analysis</h3>
+                        <p>Get detailed insights into your financial health with multiple ratios and expert recommendations.</p>
+                    </div>
+                </div>
+                <div class="benefit-item" data-aos="fade-right" data-aos-delay="100">
+                    <div class="benefit-icon">🚀</div>
+                    <div class="benefit-content">
+                        <h3>Easy to Use</h3>
+                        <p>Simple interface with instant calculations. No financial expertise required.</p>
+                    </div>
+                </div>
+                <div class="benefit-item" data-aos="fade-right" data-aos-delay="200">
+                    <div class="benefit-icon">🔒</div>
+                    <div class="benefit-content">
+                        <h3>Privacy Focused</h3>
+                        <p>All calculations are performed locally. Your financial data never leaves your device.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-section" data-aos="zoom-in">
+            <h2>Ready to Take Control of Your Finances?</h2>
+            <p>Start calculating your financial ratios today and make informed decisions for your future.</p>
+            <a href="/calculator#savings" class="cta-button">Get Started Now</a>
+        </section>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <p> 2024 Financial Ratios Calculator</p>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            once: true,
+            offset: 100
+        });
+
+        function updateTime() {
+            const now = new Date();
+            
+            // Format date
+            const options = { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' };
+            const formattedDate = now.toLocaleDateString('en-US', options);
+            
+            // Calculate IST (UTC+5:30)
+            const istHours = String((now.getUTCHours() + 5) % 24).padStart(2, '0');
+            const istMinutes = String((now.getUTCMinutes() + 30) % 60).padStart(2, '0');
+            const istSeconds = String(now.getUTCSeconds()).padStart(2, '0');
+            
+            // Update DOM
+            document.getElementById('current-date').innerText = formattedDate;
+            document.getElementById('current-time').innerText = `${istHours}:${istMinutes}:${istSeconds}`;
+        }
+
+        setInterval(updateTime, 1000);
+        updateTime();
+
+        // Smooth scroll functionality
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
